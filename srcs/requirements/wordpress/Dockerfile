@@ -1,18 +1,20 @@
 FROM debian:bookworm
 
 RUN apt update && apt install -y \
-    php \
-    php-fpm \
-    php-mysql \
-    curl
+    php8.2 \
+    php8.2-fpm \
+    php8.2-mysql \
+    curl \
+    mariadb-client \
+    && apt clean && rm -rf /var/lib/apt/lists/*
+
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
 
 WORKDIR /var/www/html
 
-RUN curl -O https://wordpress.org/latest.tar.gz \
-    && tar -xzf latest.tar.gz \
-    && mv wordpress/* . \
-    && rm -rf wordpress latest.tar.gz
-
+# ensure PHP-FPM runs in foreground safely
 COPY tools/setup.sh /setup.sh
 RUN chmod +x /setup.sh
 

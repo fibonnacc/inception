@@ -2,7 +2,10 @@ FROM debian:bookworm
 
 RUN apt update && apt install -y nginx openssl
 
-COPY conf/default.conf /etc/nginx/sites-available/default
+# Remove default config
+RUN rm -rf /etc/nginx/sites-enabled/default
+
+COPY conf/default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir -p /etc/nginx/ssl
 
