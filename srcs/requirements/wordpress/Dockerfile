@@ -16,6 +16,7 @@ WORKDIR /var/www/html
 
 # ensure PHP-FPM runs in foreground safely
 COPY tools/setup.sh /setup.sh
+
 RUN chmod +x /setup.sh
 
 EXPOSE 9000
