@@ -23,12 +23,30 @@ services:
     restart: always
     depends_on:
       - mariadb
+      - redis
 
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - inception_network
+    env_file: .env
+    restart: always
+
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    networks:
+      - inception_network
+    restart: always
+
+  ftp:
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    volumes:
+      - wordpress_data:/var/www/html
     networks:
       - inception_network
     env_file: .env

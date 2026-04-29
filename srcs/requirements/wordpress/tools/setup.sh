@@ -34,8 +34,30 @@ if [ ! -f "wp-config.php" ]; then
         --role=author \
         --user_pass=$WP_USER_PASSWORD
 
+    # Redis configuration
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --raw --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
+
     chown -R www-data:www-data /var/www/html
     chmod -R 755 /var/www/html
+fi
+
+# Ensure Redis is configured and plugin is active (outside the initial install block)
+if ! wp config get WP_REDIS_HOST --allow-root > /dev/null 2>&1; then
+    echo "Adding Redis configuration to wp-config.php..."
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --raw --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+fi
+
+if ! wp plugin is-active redis-cache --allow-root; then
+    echo "Activating Redis Cache plugin..."
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
 fi
 
 # Configure PHP-FPM to listen on 9000
