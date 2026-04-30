@@ -49,6 +49,10 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - inception_network
+    ports:
+      - "21:21"
+      # You MUST also map the passive ports for the actual file transfer to work
+      - "40000-40010:40000-40010"
     env_file: .env
     restart: always
 
