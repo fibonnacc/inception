@@ -19,7 +19,6 @@ RUN mkdir -p /etc/nginx/ssl
 
 # -days 365 ---> stand for make the certificate that are generated useful for one year.
 
-
 RUN openssl req -x509 -nodes -days 365 \
     -newkey rsa:2048 \
     -keyout /etc/nginx/ssl/nginx.key \

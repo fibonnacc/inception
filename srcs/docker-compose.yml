@@ -54,6 +54,16 @@ services:
       # You MUST also map the passive ports for the actual file transfer to work
       - "40000-40010:40000-40010"
     env_file: .env
+
+  adminer:
+    build: ./requirements/adminer
+    container_name: adminer
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:8080"
+    networks:
+      - inception_network
     restart: always
 
 volumes:
