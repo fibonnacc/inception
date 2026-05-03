@@ -1,4 +1,3 @@
-
 services:
   nginx:
     build: ./requirements/nginx
@@ -51,9 +50,9 @@ services:
       - inception_network
     ports:
       - "21:21"
-      # You MUST also map the passive ports for the actual file transfer to work
       - "40000-40010:40000-40010"
     env_file: .env
+    restart: always
 
   adminer:
     build: ./requirements/adminer
