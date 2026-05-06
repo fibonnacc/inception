@@ -65,6 +65,15 @@ services:
       - inception_network
     restart: always
 
+  static_website:
+    build: ./requirements/bonus/static_website
+    container_name: static_website
+    ports:
+      - "8081:8081"
+    networks:
+      - inception_network
+    restart: always
+
 volumes:
   mariadb_data:
     driver_opts:
