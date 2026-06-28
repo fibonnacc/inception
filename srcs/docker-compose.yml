@@ -74,6 +74,20 @@ services:
       - inception_network
     restart: always
 
+  netdata:
+    build: ./requirements/bonus/netdata
+    container_name: netdata
+    ports:
+      - "19999:19999"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+    networks:
+      - inception_network
+    restart: always
+
 volumes:
   mariadb_data:
     driver_opts:

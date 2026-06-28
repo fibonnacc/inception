@@ -3,186 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Hicham Elfatihi, a software engineering student at 42 School, showcasing projects in C, C++, and Web Development.">
-    <title>Hicham Elfatihi | Portfolio</title>
+    <meta name="description" content="Hicham - Software Engineer & Low-Level Specialist portfolio showcasing projects in C/C++98 systems programming, network architecture, and container orchestration.">
+    <title>Hicham | Systems Engineer & Low-Level Specialist</title>
+    <!-- Monospace and UI Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">HICHAM.</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Terminal Scanline Overlay for retro-futuristic feel -->
+    <div class="scanlines"></div>
+
+    <header id="main-header">
+        <nav id="nav-bar">
+            <div class="terminal-prompt" id="header-prompt">
+                <span class="user">hicham</span><span class="at">@</span><span class="host">1337-school</span><span class="colon">:</span><span class="path">~</span><span class="char">$</span>
+                <span class="cmd-blink">nvim portfolio.md</span>
+            </div>
+            <ul class="nav-links" id="navigation-list">
+                <li><a id="nav-home" href="#hero" class="active"><span class="nav-num">01.</span> index.html</a></li>
+                <li><a id="nav-projects" href="#projects"><span class="nav-num">02.</span> projects.json</a></li>
+                <li><a id="nav-about" href="#about"><span class="nav-num">03.</span> about_me.txt</a></li>
+                <li><a id="nav-contact" href="#contact"><span class="nav-num">04.</span> contact.sh</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
+        <!-- Hero Section: Featuring Interactive terminal widget -->
+        <section id="hero" class="active">
             <div class="container">
-                <h1>Hi, I'm Hicham Elfatihi.</h1>
-                <p class="subtitle">Software Engineering Student @ 42 School.</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn primary">View Work</a>
-                    <a href="#contact" class="btn secondary">Contact Me</a>
+                <div class="terminal-window" id="hero-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                        <div class="terminal-title">zsh — guest@hicham.dev (80×24)</div>
+                        <div class="terminal-status">utf-8</div>
+                    </div>
+                    <div class="terminal-body" id="terminal-screen">
+                        <div class="terminal-line system-msg">Last login: <span id="current-date">Sun Jun 28 11:27:16 2026</span> on ttys001</div>
+                        <div class="terminal-line system-msg">Welcome to Hicham's interactive shell. Type <span class="highlight">help</span> for a list of commands.</div>
+                        <div class="terminal-line">
+                            <span class="user">guest</span><span class="at">@</span><span class="host">hicham.dev</span><span class="colon">:</span><span class="path">~</span><span class="char">$</span> <span class="command-run">cat intro.txt</span>
+                        </div>
+                        <div class="terminal-output intro-output">
+                            <span class="ascii-art">
+██╗  ██╗██╗ ██████╗██╗  ██╗ █████╗ ███╗   ███╗
+██║  ██║██║██╔════╝██║  ██║██╔══██╗████╗ ████║
+███████║██║██║     ███████║███████║██╔████╔██║
+██╔══██║██║██║     ██╔══██║██╔══██║██║╚██╔╝██║
+██║  ██║██║╚██████╗██║  ██║██║  ██║██║ ╚═╝ ██║
+╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+                            </span>
+                            <h1 class="main-title">Hicham</h1>
+                            <p class="subtitle">Software Engineer | Low-Level Systems Specialist</p>
+                            <p class="intro-desc">
+                                Student at <span class="highlight-um6p">UM6P</span> and the <span class="highlight-42">1337 Coding School</span> (42 Network). 
+                                Deeply invested in systems programming, custom memory management, and network architecture in C and C++98.
+                                Exploring the boundary where hardware constraints meet elegant software abstractions.
+                            </p>
+                        </div>
+                        
+                        <!-- Terminal execution log will append here -->
+                        <div id="terminal-history"></div>
+
+                        <div class="terminal-line input-line">
+                            <span class="user">guest</span><span class="at">@</span><span class="host">hicham.dev</span><span class="colon">:</span><span class="path">~</span><span class="char">$</span>
+                            <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type a command...">
+                            <span id="terminal-cursor"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-down-hint">
+                    <a href="#projects" id="scroll-arrow">&darr; scroll to inspect source code &darr;</a>
                 </div>
             </div>
         </section>
 
-        <section id="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <p>I am a software engineering student at 42 School, a unique, teacher-less, and peer-to-peer coding academy that emphasizes hands-on learning and collaborative problem-solving.</p>
-                <p>My education is driven by rigorous projects—primarily in C and C++—where I've learned to build everything from scratch, including custom libraries, shells, and graphics engines. This environment has forged my ability to adapt quickly, think critically, and dive deep into complex systems.</p>
-                <p>Beyond the core curriculum, I'm constantly exploring modern web technologies and DevOps tools, always seeking the most elegant and efficient solutions to engineering challenges.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <div class="container">
-                <h2>Technical Proficiency</h2>
-                <div class="skills-matrix">
-                    <div class="skill-row">
-                        <div class="skill-label">Languages</div>
-                        <div class="skill-items">
-                            <div class="skill-badge" data-level="Expert">C</div>
-                            <div class="skill-badge" data-level="Advanced">C++</div>
-                            <div class="skill-badge" data-level="Intermediate">JavaScript</div>
-                            <div class="skill-badge" data-level="Familiar">Python</div>
-                        </div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">Web Stack</div>
-                        <div class="skill-items">
-                            <div class="skill-badge" data-level="Advanced">HTML5</div>
-                            <div class="skill-badge" data-level="Advanced">CSS3</div>
-                            <div class="skill-badge" data-level="Intermediate">Node.js</div>
-                            <div class="skill-badge" data-level="Familiar">React</div>
-                        </div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">Engineering</div>
-                        <div class="skill-items">
-                            <div class="skill-badge" data-level="Advanced">Git</div>
-                            <div class="skill-badge" data-level="Advanced">Bash</div>
-                            <div class="skill-badge" data-level="Intermediate">Docker</div>
-                            <div class="skill-badge" data-level="Familiar">Makefile</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Projects Section: Custom Vim/Neovim tab style cards -->
         <section id="projects">
             <div class="container">
-                <h2>Projects</h2>
+                <div class="section-tag">&lt;section class="projects"&gt;</div>
+                <h2 class="section-title">Featured Builds</h2>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>libft</h3>
-                        <p>A custom implementation of the standard C library, featuring over 40 essential functions.</p>
-                        <div class="tags">
-                            <span>C</span>
-                            <span>Standard Library</span>
+                    
+                    <!-- ft_irc Card -->
+                    <div class="project-card" id="card-ft-irc">
+                        <div class="editor-header">
+                            <div class="tab active"><span class="icon cpp"></span> ft_irc.cpp</div>
+                            <div class="tab-fill"></div>
+                            <div class="editor-status">C++98</div>
                         </div>
-                        <a href="https://github.com/fibonnacc" class="project-link">GitHub &rarr;</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>minishell</h3>
-                        <p>A minimalist Unix shell created in C, handling environment variables, redirections, and pipes.</p>
-                        <div class="tags">
-                            <span>C</span>
-                            <span>UNIX</span>
+                        <div class="editor-body">
+                            <div class="line-number-gutter">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                            </div>
+                            <div class="code-area">
+                                <h3>ft_irc</h3>
+                                <p class="proj-desc">A fully functional IRC server implementing the RFC 1459 protocol from scratch.</p>
+                                <div class="features-list">
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Non-blocking I/O multiplexing utilizing custom <code>poll()</code> event loops.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Robust client registration flows, channel management, operator privileges, and modes.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Custom parsing of IRC messages, command routing, and memory-safe buffer queue handling.</div>
+                                </div>
+                                <div class="tags">
+                                    <span>C++98</span>
+                                    <span>Socket Programming</span>
+                                    <span>I/O Multiplexing</span>
+                                    <span>IRC/RFC-1459</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://github.com/fibonnacc" target="_blank" class="project-link" id="link-ft-irc">git clone ft_irc.git &rarr;</a>
+                                </div>
+                            </div>
                         </div>
-                        <a href="https://github.com/fibonnacc" class="project-link">GitHub &rarr;</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>cub3d</h3>
-                        <p>A 3D game engine using raycasting techniques, inspired by the classic Wolfenstein 3D.</p>
-                        <div class="tags">
-                            <span>C</span>
-                            <span>Raycasting</span>
-                        </div>
-                        <a href="https://github.com/fibonnacc" class="project-link">GitHub &rarr;</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Inception</h3>
-                        <p>Inception project is a system administration and DevOps project where you learn how to build and manage a small web infrastructure using Docker and Docker Compose.</p>
-                        <div class="tags">
-                            <span>docker</span>
-                            <span>linux CLI</span>
-                        </div>
-                        <a href="https://github.com/fibonnacc" class="project-link">GitHub &rarr;</a>
                     </div>
 
-                    <div class="project-card">
-                      <h3>so_long</h3>
-                      <div class="tags"<p>
-                        so_long is a 2D game development project where you learn how to handle graphics, game maps, and player movement in C. It focuses on using a simple rendering library to display a game window, manage textures, and implement basic game logic like collecting items and reaching an exit.
-                        </p>
-                        <span>C</span>
-                      </div>
-                      <a href="https://github.com/fibonnacc" class="project-link">GitHub &rarr;</a>
+                    <!-- Inception Card -->
+                    <div class="project-card" id="card-inception">
+                        <div class="editor-header">
+                            <div class="tab active"><span class="icon yaml"></span> docker-compose.yml</div>
+                            <div class="tab-fill"></div>
+                            <div class="editor-status">DevOps</div>
+                        </div>
+                        <div class="editor-body">
+                            <div class="line-number-gutter">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                            </div>
+                            <div class="code-area">
+                                <h3>Inception</h3>
+                                <p class="proj-desc">Multi-container infrastructure orchestration built from scratch using strict system admin guidelines.</p>
+                                <div class="features-list">
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Secure orchestration of Nginx (TLS v1.2/v1.3), WordPress with php-fpm, MariaDB, and FTP containers.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Zero pre-built Docker hub images; all built dynamically via custom alpine Dockerfiles.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Persistent bind mount volumes for database files and site content with strict permission layers.</div>
+                                </div>
+                                <div class="tags">
+                                    <span>Docker Compose</span>
+                                    <span>System Administration</span>
+                                    <span>Nginx / SSL</span>
+                                    <span>Alpine Linux</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://github.com/fibonnacc" target="_blank" class="project-link" id="link-inception">cat inception/configs &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                      <h3>push_swap</h3>
-                      <p>
-                      Sorting algorithm project where I implemented an efficient stack-based sorting program using limited operations. Focuses on algorithm optimization and complexity reduction.
-                      </p>
-                      <div class="tags">
-                        <span>C</span>
-                        <span>Algorithms</span>
-                        <span>Sorting</span>
-                      </div>
+                    <!-- Algorithm Visualizer Card -->
+                    <div class="project-card" id="card-visualizer">
+                        <div class="editor-header">
+                            <div class="tab active"><span class="icon py"></span> visualizer.py</div>
+                            <div class="tab-fill"></div>
+                            <div class="editor-status">Algorithms</div>
+                        </div>
+                        <div class="editor-body">
+                            <div class="line-number-gutter">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                            </div>
+                            <div class="code-area">
+                                <h3>Algorithm Visualizer</h3>
+                                <p class="proj-desc">An interactive visualizer showcasing the math behind binary search and merge-insertion sorting.</p>
+                                <div class="features-list">
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Demonstrates the Ford-Johnson (Merge-Insertion) sorting algorithm.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Displays insertion ordering optimized via the Jacobsthal mathematical sequence.</div>
+                                    <div class="feat-item"><span class="bullet">&gt;</span> Minimizes comparison counts, showcasing theoretical computational complexity bounds.</div>
+                                </div>
+                                <div class="tags">
+                                    <span>JavaScript</span>
+                                    <span>Algorithms</span>
+                                    <span>Ford-Johnson</span>
+                                    <span>Jacobsthal Sequence</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://github.com/fibonnacc" target="_blank" class="project-link" id="link-visualizer">python3 main.py --run &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                      <h3>ft_printf</h3>
-                      <p>
-                      Reimplementation of the standard printf function in C. Handles formatted output, variadic functions, and different data types with custom parsing logic.
-                      </p>
-                      <div class="tags">
-                        <span>C</span>
-                        <span>Variadic Functions</span>
-                        <span>Parsing</span>
-                      </div>
-                    </div>
-
-                    <div class="project-card">
-                      <h3>philosophers</h3>
-                      <p>
-                      Multi-threading project simulating the dining philosophers problem. Focuses on concurrency, mutexes, thread synchronization, and avoiding race conditions and deadlocks.
-                      </p>
-                      <div class="tags">
-                        <span>C</span>
-                        <span>Threads</span>
-                        <span>Mutex</span>
-                        <span>Concurrency</span>
-                      </div>
-                    </div>
                 </div>
+                <div class="section-tag">&lt;/section&gt;</div>
             </div>
         </section>
 
-        <section id="contact">
-          <div class="container">
-            <h2>Contact Me</h2>
-                <p>Feel free to reach out for collaborations or just a friendly chat.</p>
-                <div class="contact-links">
-                    <a href="mailto:hicham@example.com">Email</a>
-                    <a href="https://github.com/fibonnacc" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/hichamelfatihi" target="_blank">LinkedIn</a>
+        <!-- About Me Section: LeetCode & Problem Solving -->
+        <section id="about">
+            <div class="container">
+                <div class="section-tag">&lt;section class="about"&gt;</div>
+                <h2 class="section-title">Problem Solving &amp; Algorithms</h2>
+                <div class="about-editor">
+                    <div class="editor-header">
+                        <div class="tab active"><span class="icon cpp"></span> leetcode.json</div>
+                        <div class="tab-fill"></div>
+                        <div class="editor-status">JSON</div>
+                    </div>
+                    <div class="editor-body">
+                        <div class="line-number-gutter">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                        </div>
+                        <div class="about-text">
+                            <h3># LeetCode Profile</h3>
+                            <p>
+                                I actively practice algorithm design and complexity optimization, solving algorithmic challenges to sharpen my analytical reasoning and systems mindset.
+                            </p>
+                            <div class="leetcode-widget">
+                                <div class="leetcode-header">
+                                    <span class="user-tag">User: Hicham1244</span>
+                                    <a href="https://leetcode.com/u/Hicham1244/" target="_blank" class="leetcode-link" id="link-leetcode">leetcode.com/u/Hicham1244 &rarr;</a>
+                                </div>
+                                <div class="leetcode-stats-grid">
+                                    <div class="stat-box easy">
+                                        <span class="difficulty">Easy</span>
+                                        <div class="stat-bar"><div class="fill" style="width: 60%;"></div></div>
+                                        <span class="count">Solved: 14</span>
+                                    </div>
+                                    <div class="stat-box medium">
+                                        <span class="difficulty">Medium</span>
+                                        <div class="stat-bar"><div class="fill" style="width: 35%;"></div></div>
+                                        <span class="count">Solved: 8</span>
+                                    </div>
+                                    <div class="stat-box hard">
+                                        <span class="difficulty">Hard</span>
+                                        <div class="stat-bar"><div class="fill" style="width: 0%;"></div></div>
+                                        <span class="count">Solved: 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Tackling diverse problems in data structures, graph theory, and dynamic programming helps build robust computational intuition, reinforcing the low-level optimizations I apply in my systems and network programming codebases.
+                            </p>
+                            <div class="internship-alert" id="internship-status">
+                                <span class="status-indicator"></span>
+                                <div class="alert-content">
+                                    <strong>Internship Status:</strong> Actively preparing to begin a professional software engineering internship search starting within the next three months. Let's build robust systems together.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="section-tag">&lt;/section&gt;</div>
+            </div>
+        </section>
+
+        <!-- Contact Section: Terminal prompt for contacting -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-tag">&lt;section class="contact"&gt;</div>
+                <h2 class="section-title">Establish Connection</h2>
+                <div class="contact-box">
+                    <p class="ssh-cmd">$ ssh guest@hicham.dev</p>
+                    <div class="terminal-line"><span class="host-text">guest@hicham.dev's password:</span> **********</div>
+                    <div class="terminal-line"><span class="success-text">Access Granted.</span> Establishing secure tunnel...</div>
+                    <div class="contact-channels">
+                        <a href="mailto:hicham@example.com" class="channel" id="contact-email">
+                            <span class="channel-title">Email</span>
+                            <span class="channel-value">hicham@example.com</span>
+                        </a>
+                        <a href="https://github.com/fibonnacc" target="_blank" class="channel" id="contact-github">
+                            <span class="channel-title">GitHub</span>
+                            <span class="channel-value">github.com/fibonnacc</span>
+                        </a>
+                        <a href="https://linkedin.com/in/hichamelfatihi" target="_blank" class="channel" id="contact-linkedin">
+                            <span class="channel-title">LinkedIn</span>
+                            <span class="channel-value">linkedin.com/in/hichamelfatihi</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="section-tag">&lt;/section&gt;</div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Hicham Elfatihi. All rights reserved.</p>
+            <p class="footer-msg">Designed with Neovim configurations. Made by Hicham. &copy; 2026</p>
+            <p class="system-stats">SYS_STATUS: 200 OK | PORT: 8081 | ENCODING: UTF-8</p>
         </div>
     </footer>
 
