@@ -77,10 +77,18 @@ services:
   netdata:
     build: ./requirements/bonus/netdata
     container_name: netdata
+    pid: host          
+    user: root         
+    cap_add:           
+      - SYS_PTRACE     
     ports:
       - "19999:19999"
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DOCKER_SOCK=/var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /etc/os-release:/host/etc/os-release:ro
