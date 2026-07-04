@@ -55,7 +55,7 @@ services:
     restart: always
 
   adminer:
-    build: ./requirements/adminer
+    build: ./requirements/bonus/adminer
     container_name: adminer
     depends_on:
       - mariadb
