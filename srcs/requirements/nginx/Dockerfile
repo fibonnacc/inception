@@ -2,12 +2,7 @@ FROM debian:bookworm
 
 RUN apt update && apt install -y nginx openssl
 
-# Remove default config of nginx to make sure the confilct can't happen
-
-RUN rm -rf /etc/nginx/sites-enabled/default
-
 COPY conf/default.conf /etc/nginx/conf.d/default.conf
-
 
 RUN mkdir -p /etc/nginx/ssl
 
