@@ -5,6 +5,9 @@ all: build up
 
 # Build images
 build:
+	mkdir -p /home/$(USER)/data
+	mkdir -p /home/$(USER)/data/wordpress
+	mkdir -p /home/$(USER)/data/mariadb
 	docker compose -f srcs/docker-compose.yml build
 
 # Start containers

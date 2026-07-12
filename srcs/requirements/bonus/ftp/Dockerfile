@@ -7,6 +7,6 @@ COPY tools/setup.sh /setup.sh
 
 RUN chmod +x /setup.sh
 
-EXPOSE 21 40000-40005
+EXPOSE 21 40000-40010
 
 CMD ["/setup.sh"]
